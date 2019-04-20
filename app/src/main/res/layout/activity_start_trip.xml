@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_end_trip"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/backgrndColor"
+    tools:context="android.example.com.emergencyaid.StartTripActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="50dp"
+        android:id="@+id/startloctext"
+        android:gravity = "center_horizontal"
+        android:fontFamily="serif"
+        android:textColor="#000000"
+        android:textSize="24sp" />
+
+    <TextView
+        android:text="to"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/startloctext"
+        android:layout_marginTop="30dp"
+        android:gravity = "center_horizontal"
+        android:id="@+id/totext"
+        android:fontFamily="serif"
+        android:textColor="#000000"
+        android:textSize="24sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/totext"
+        android:layout_marginTop="31dp"
+        android:gravity = "center_horizontal"
+        android:id="@+id/endloctext"
+        android:fontFamily="serif"
+        android:textColor="#000000"
+        android:textSize="24sp" />
+
+    <Button
+        android:text="Start trip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/endloctext"
+        android:layout_marginTop="82dp"
+        android:layout_centerVertical="true"
+        android:layout_gravity = "center_horizontal"
+        android:id="@+id/StartTripbtn"
+        android:onClick="startTrip"
+        android:textSize="24sp"
+        android:background="@drawable/buton_rounded_start_trip"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/StartTripbtn"
+        android:layout_toLeftOf="@+id/StartTripbtn"
+        android:layout_toStartOf="@+id/StartTripbtn"
+        android:layout_marginTop="69dp"
+        android:id="@+id/latitudeText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/latitudeText"
+        android:layout_toRightOf="@+id/StartTripbtn"
+        android:layout_toEndOf="@+id/StartTripbtn"
+        android:id="@+id/longitudeText" />
+
+    <Button
+        android:text="Logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/logout"
+        android:layout_centerVertical="true"
+        android:textAlignment="center"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_below="@+id/StartTripbtn"
+        android:onClick="signout"
+        android:background="@drawable/button_rounded_log_activities"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity = "center_horizontal"
+        android:id="@+id/createdTimeLabel"
+        android:padding="12px"
+        android:layout_margin="24px"
+        android:text="Trip's creation time:"
+        android:fontFamily="serif"
+        android:textSize="20sp"
+        android:layout_below="@+id/endloctext"
+        android:layout_toRightOf="@+id/latitudeText"
+        android:layout_toEndOf="@+id/latitudeText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity = "right"
+        android:id="@+id/createdTime"
+        android:padding="12px"
+        android:layout_margin="24px"
+
+        android:fontFamily="serif"
+        android:textSize="20sp"
+        android:layout_below="@+id/endloctext"
+        android:layout_toRightOf="@+id/createdTimeLabel"
+        />
+
+</RelativeLayout>
