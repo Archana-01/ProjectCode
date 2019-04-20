@@ -12,8 +12,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -79,6 +83,7 @@ public class StartTripActivity extends AppCompatActivity {
 
 
         urlTrip ="http://projectaa.eastus.cloudapp.azure.com/api/Trip/GetList";
+
 
         JSONObject postparam = new JSONObject();
         try {
@@ -299,6 +304,7 @@ public class StartTripActivity extends AppCompatActivity {
         Intent loggingOut = new Intent(StartTripActivity.this,LoginActivity.class);
         startActivity(loggingOut);
     }
+
 
 
 

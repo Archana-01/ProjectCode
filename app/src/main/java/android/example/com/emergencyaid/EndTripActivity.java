@@ -28,8 +28,11 @@ import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 import android.support.v4.content.LocalBroadcastManager;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -59,7 +62,6 @@ public class EndTripActivity extends AppCompatActivity {
         final TextView txtVwStart = (TextView) findViewById(R.id.startloctext);
         final TextView txtVwEnd = (TextView) findViewById(R.id.endloctext);
         timeOfStart = (TextView) findViewById(R.id.startedTime);
-        Log.v("end",2+"");
 
         String startLoc = "";
         String endLoc = "";
@@ -106,19 +108,17 @@ public class EndTripActivity extends AppCompatActivity {
         */
 
         final String url ="http://projectaa.eastus.cloudapp.azure.com/api/trip/update";
-        Toast.makeText(getApplicationContext(),"token:"+token,Toast.LENGTH_SHORT).show();
-        Toast.makeText(getApplicationContext(),"id:"+tripID,Toast.LENGTH_SHORT).show();
-        Toast.makeText(getApplicationContext(),"latitude:"+latView.getText().toString(),Toast.LENGTH_SHORT).show();
-        Toast.makeText(getApplicationContext(),"longitude:"+longView.getText().toString(),Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(),"token:"+token,Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(),"id:"+tripID,Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(),"latitude:"+latView.getText().toString(),Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(),"longitude:"+longView.getText().toString(),Toast.LENGTH_SHORT).show();
 
         Handler handler = new Handler();
         for(int c = 0; c < lat.length; c++){
             final int finalCount = c;
             int delay=10000*finalCount;
-            Log.v("delay:",delay+"");
             handler.postDelayed(new Runnable() {
                 public void run() {
-                  Log.i("c:", finalCount +"");
 
 
                     JSONObject postparam = new JSONObject();
@@ -127,9 +127,9 @@ public class EndTripActivity extends AppCompatActivity {
                         postparam.put("tripid", tripID);
                         postparam.put("latitude", lat[finalCount]);
                         postparam.put("longitude", longitude[finalCount]);
-                         Log.v("request", postparam + "");
-//                        Toast.makeText(getApplicationContext(), "sending update request", Toast.LENGTH_SHORT).show();
-                        //Toast.makeText(getApplicationContext(), postparam + "", Toast.LENGTH_LONG).show();
+                        postparam.put("time",getCurrentTimeUsingDate());
+
+                          Toast.makeText(getApplicationContext(), "sending update request", Toast.LENGTH_SHORT).show();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -169,7 +169,7 @@ public class EndTripActivity extends AppCompatActivity {
                     Log.v("Send time", formatter.format(now) + "");
 
                 }
-            }, 30000*finalCount);
+            }, 20000*finalCount);
         }
 
 //        Timer timer = new Timer();
@@ -222,7 +222,8 @@ public class EndTripActivity extends AppCompatActivity {
                 postparam.put("tripid", tripID);
                 postparam.put("latitude", lat[c]);
                 postparam.put("longitude", longitude[c]);
-                Log.v("request", postparam + "");
+                postparam.put("time",getCurrentTimeUsingDate());
+
                 Toast.makeText(getApplicationContext(), "sending update request", Toast.LENGTH_SHORT).show();
                 //Toast.makeText(getApplicationContext(), postparam + "", Toast.LENGTH_LONG).show();
             } catch (JSONException e) {
@@ -347,5 +348,14 @@ public class EndTripActivity extends AppCompatActivity {
                     }
                 });
         Volley.newRequestQueue(this).add(jsonObjReq);
+    }
+
+    public static String getCurrentTimeUsingDate() {
+        Date date = new Date();
+        String strDateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS";
+        DateFormat dateFormat = new SimpleDateFormat(strDateFormat);
+        String formattedDate= dateFormat.format(date);
+        //System.out.println("Current time of the day using Date - 12 hour format: " + formattedDate);
+        return formattedDate;
     }
 }

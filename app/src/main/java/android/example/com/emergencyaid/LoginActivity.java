@@ -24,6 +24,13 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import static android.example.com.emergencyaid.EndTripActivity.getCurrentTimeUsingDate;
+
+
 public class LoginActivity extends AppCompatActivity {
 
 EditText uname;
@@ -119,6 +126,8 @@ public void SubmitCred(View v) {
             });
     Volley.newRequestQueue(this).add(jsonObjReq);
 }
+
+
 }
 
 
