@@ -22,11 +22,6 @@
             </intent-filter>
         </activity>
 
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDtSwbqHlzfGL003kxLDzn2fv8xMMOGHis"
-            tools:replace="android:value" />
-
         <activity android:name=".StartTripActivity" />
 
         <service
